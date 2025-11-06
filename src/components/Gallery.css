@@ -1,58 +1,101 @@
-.gallery-section { padding: 2rem 1rem; max-width: 1200px; margin: 0 auto; }
+.gallery-section {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-.gallery-section h2 {
-  text-align: center; margin-bottom: 1.25rem; color: #0b2545;
+.gallery-title {
+  text-align: center;
+  color: #0b2545;
   font-size: 1.6rem;
+  margin-bottom: 1.25rem;
 }
 
 .rice-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-  align-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
 }
 
-.rice-card {
-  background: #fff;
+/* Flip card */
+.flip-card {
+  perspective: 1000px;
+  border-radius: 12px;
+  overflow: visible;
+  height: 300px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(12,20,40,0.06);
+}
+
+.flip-card:focus-within .flip-card-inner,
+.flip-card-inner:hover {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
   border-radius: 12px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 220ms ease, box-shadow 220ms ease;
-  box-shadow: 0 6px 20px rgba(12,20,40,0.04);
 }
 
-.rice-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 14px 45px rgba(12,20,40,0.09);
-}
-
-.rice-card img {
+.flip-card-front img {
   width: 100%;
-  height: 180px;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.rice-info {
+.flip-card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   padding: 1rem;
-  color: #2b3a4a;
-  flex: 1;
+  color: #fff;
+  background: linear-gradient(135deg,#ff7a18,#ffb347);
+  text-align: center;
 }
 
-.rice-info h3 { margin: 0 0 0.5rem; font-size: 1.05rem; color: #10223f; }
-.rice-info ul { list-style: none; margin: 0; padding: 0; color: #54606f; font-size: 0.95rem; }
-.rice-info li { margin-bottom: 0.35rem; }
+.flip-card-back h3 { margin: 0; font-size: 1.1rem; }
+.flip-card-back .muted { font-size: 0.95rem; opacity: 0.95; }
+.flip-card-back .details { font-size: 0.9rem; opacity: 0.95; }
 
-/* small tag for availability */
-.badge {
-  display: inline-block; font-size: 0.78rem; padding: 0.28rem 0.5rem;
-  border-radius: 999px; background: #eef6ff; color: #0b61d1; font-weight: 700;
-  margin-left: 0.5rem;
+/* Mobile-first adjustments */
+@media (max-width: 900px) {
+  .flip-card { height: 260px; }
+  .gallery-title { font-size: 1.4rem; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .rice-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+  .flip-card { height: 220px; }
+  .flip-card-back h3 { font-size: 1rem; }
+  .flip-card-back .muted, .flip-card-back .details { font-size: 0.9rem; padding: 0 0.5rem; }
+}
+
+/* Prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .flip-card-inner,
+  .flip-card-inner:hover {
+    transition: none;
+    transform: none !important;
   }
 }

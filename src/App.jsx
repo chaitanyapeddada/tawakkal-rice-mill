@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Gallery from "./components/Gallery";
 import BranchList from "./components/BranchList";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import "./App.css";
 
@@ -15,9 +14,8 @@ function App() {
         <Navbar />
         <Header />
         <Routes>
-          <Route path="services" element={<Gallery />} />
+          <Route index element={<Gallery />} />
           <Route path="branches" element={<BranchList />} />
-          <Route path="contact" element={<Contact />} />
         </Routes>
         <Footer />
       </Router>

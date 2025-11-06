@@ -1,24 +1,56 @@
+import React from 'react';
+import './BranchList.css';
+
 const branches = [
-  { name: "Main Branch", location: "Jangaon", available: true },
-  { name: "Main Branch", location: "Ganguphad Jangaon", available: true },
+  {
+    id: 1,
+    name: "Branch",
+    address: "TAWAKKAL RICE MILL Main Road Ganugu Pahad Ganguphad,",
+    city: "Jangaon",
+    state: "Telangana",
+    phone: "+91 99663 99369",
+    hours: "Mon-Sat: 6AM-12AM"
+  },
+  {
+    id: 2,
+    name: "Branch",
+    address: "TAWAKKAL RICE MILL M643+FM8, Lingalaghanpur",
+    city: "Lingalaghanpur",
+    state: "Telangana ",
+    phone: "+91 90105 19419",
+    hours: "Mon-Sat: 6AM-12AM"
+  },
 ];
 
-const BranchList = () => (
-  <section className="p-6">
-    <h2 className="text-2xl font-semibold mb-4 text-center">Our Branches</h2>
-    <ul className="max-w-lg mx-auto">
-      {branches.map((b, i) => (
-        <li
-          key={i}
-          className="mb-3 p-3 bg-white rounded-lg shadow-sm flex justify-between items-center"
-        >
-          <span>{b.name} — {b.location}</span>
-          <span className={b.available ? "text-green-600" : "text-red-600"}>
-            {b.available ? "Available" : "Closed"}
-          </span>
-        </li>
-      ))}
-    </ul>
-  </section>
-);
+const BranchList = () => {
+  return (
+    <section className="branch-section">
+      <h2>Our Branches</h2>
+      <div className="branch-grid">
+        {branches.map(branch => (
+          <div key={branch.id} className="branch-card">
+            <div className="branch-header">
+              <h3>{branch.name}</h3>
+              <span className="badge">{branch.city}</span>
+            </div>
+            <div className="branch-details">
+              <p><i className="fas fa-map-marker-alt"></i> {branch.address}</p>
+              <p><i className="fas fa-phone"></i> {branch.phone}</p>
+              <p><i className="fas fa-clock"></i> {branch.hours}</p>
+            </div>
+            <a 
+              href={`https://maps.google.com/?q=${encodeURIComponent(branch.address + ' ' + branch.city)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="map-link"
+            >
+              View on Map
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
 export default BranchList;

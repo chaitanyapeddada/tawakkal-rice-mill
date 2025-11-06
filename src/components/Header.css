@@ -85,6 +85,21 @@
 
 .feature-icon { width: 36px; height: 36px; color: #ffd89b; }
 
+/* responsive header */
+@media (max-width: 900px) {
+  .hero { padding: 3rem 0.8rem; background-position: center; }
+  .hero-inner { grid-template-columns: 1fr; gap: 1rem; }
+  .hero-title { font-size: 1.75rem; }
+  .hero-features { justify-content: center; gap: 0.6rem; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 2rem 0.6rem; }
+  .hero-title { font-size: 1.4rem; line-height: 1.15; }
+  .hero-sub { font-size: 0.95rem; }
+  .hero-ctas { flex-direction: column; gap: 0.6rem; }
+}
+
 @media (min-width: 900px) {
   .hero-inner { grid-template-columns: 1fr 360px; }
   .hero-features { flex-direction: column; }
