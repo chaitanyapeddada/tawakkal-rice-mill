@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar"; // <-- ensure this matches src/components/NavBar.jsx
+import Navbar from "./components/Navbar"; // <- exact casing must match src/components/Navbar.jsx
 import Header from "./components/Header";
 import Gallery from "./components/Gallery";
 import BranchList from "./components/BranchList";
