@@ -1,7 +1,6 @@
 const branches = [
   { name: "Main Branch", location: "Jangaon", available: true },
-  { name: "Karimnagar Branch", location: "Karimnagar", available: false },
-  { name: "Warangal Branch", location: "Warangal", available: true },
+  { name: "Main Branch", location: "Ganguphad Jangaon", available: true },
 ];
 
 const BranchList = () => (

@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar"; // <-- ensure this matches src/components/NavBar.jsx
+import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Gallery from "./components/Gallery";
 import BranchList from "./components/BranchList";
@@ -19,7 +19,6 @@ function App() {
           <Route path="branches" element={<BranchList />} />
           <Route path="contact" element={<Contact />} />
         </Routes>
-
         <Footer />
       </Router>
     </div>
